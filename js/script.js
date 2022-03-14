@@ -77,6 +77,51 @@ const makeGuess = function (guess){
             console.log(guessedLettersList);
       }
 
+      updateLetters();
+
+      circleToLetter();
+
 };
 
+const updateLetters = function(){
+      
+      guessedLetters.innerHTML = "";
+      
+      for(const letter of guessedLettersList){
+            
+            const li = document.createElement("li");
+            li.innerText = letter;
+            guessedLetters.append(li);
+      }
+};
 
+const circleToLetter = function(){
+      const wordUpper = word.toUpperCase();
+      const wordArray = wordUpper.split("");
+      const revealWord = [];
+      
+      for(const letter of wordArray){
+            if(guessedLettersList.includes(letter)){
+                  revealWord.push(letter.toUpperCase());
+            }
+            else{
+                  revealWord.push("●");
+            }
+      }
+
+      wordInProgress.innerText = revealWord.join("");
+
+      ;
+
+      checkWin();
+};
+
+const checkWin = function(){
+
+      if(wordInProgress.innerText === word.toUpperCase()){
+
+            message.classList.add("win");
+            message.innerHTML = `<p class="highlight"> You guessed the correct word! Congrats!</p>`;
+
+      }
+};
