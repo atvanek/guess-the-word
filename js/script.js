@@ -91,13 +91,16 @@ const makeGuess = function (guess){
       else {
             guessedLettersList.push(guess);
             console.log(guessedLettersList);
+            updateRemainingGuesses(guess);
+            updateLetters();
+            circleToLetter();
       }
 
-      updateRemainingGuesses(guess);
+      
 
-      updateLetters();
+      
 
-      circleToLetter();
+      
 
 };
 
